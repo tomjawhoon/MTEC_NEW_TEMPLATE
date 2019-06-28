@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+         <head>
+            
+            <% include  %>
+            <title>Show data</title>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+            <!--===============================================================================================-->	
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+            <!--===============================================================================================-->	
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/esm/popper-utils.min.js.map"></script>
+            <!--===============================================================================================-->	
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.css"></script>
+            <!--===============================================================================================-->	
+            <link rel="stylesheet" type="text/css" href="css/fontawesome.min.css">
+            <!--===============================================================================================-->	
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+            <!--===============================================================================================-->	
+            <link href='https://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+            <!--===============================================================================================-->	
+            <link rel="stylesheet" type="text/css" href="style.css">
+            <!--===============================================================================================-->	
+            <script src="https://use.fontawesome.com/releases/v5.8.2/js/all.css"></script>
+            <!--===============================================================================================-->	
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+            <!--===============================================================================================-->	
+            <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
+            <!--===============================================================================================-->	
+            <meta charset="UTF-8">
+            <!--===============================================================================================-->	
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!--===============================================================================================-->	
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <!--===============================================================================================-->	
+            <link rel="stylesheet" type="text/css" href="style.css">
+        </head>
+        <body>
+                <nav class="navbar navbar-dark bg-dark">
+                    <a class="navbar-brand" href="#">MTEC</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                            </button>
+                                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                                <div class="navbar-nav">
+                                    <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-item nav-link" href="#">Features</a>
+                                    <a class="nav-item nav-link" href="#">Pricing</a>
+                                    <a class="nav-item nav-link disabled" href="#">Disabled</a>
+                                </div>
+                                </div>
+                            </nav>
+            
+                    <form action='/showtime'  class="col-6" method="GET">   
+                    </form>
+                    <style>
+                            table {
+                              font-family: arial, sans-serif;
+                              border-collapse: collapse;
+                              width: 100%;
+                            }
+                      
+                            td,
+                            th {
+                              border: 1px solid #dddddd;
+                              text-align: left;
+                              padding: 8px;
+                            }
+                      
+                            tr:nth-child(even) {
+                              background-color: #dddddd;
+                            }
+                          </style>
+                  <table>
+                        <div class="jumbotron">
+                                <h2>Show even</h2>
+                                <button type="button" class="btn btn-danger" ><a href="/">BACK</a></button>
+                                <table>
+                                  <tr>
+                                    <th>event_id</th>
+                                    <th>device_id</th>
+                                    <th>button_time</th>
+                                    <th>Token</th>
+                                    <th>type</th>
+                                  </tr>
+                                  <% data.forEach(function(data) { %>
+                                    <tr>
+                                      <td>
+                                        <%= data.event_id %>
+                                      </td>
+                                      <td>
+                                        <%= data.device_id %>
+                                      </td>
+                                      <td>
+                                        <%= data.button_time %>
+                                      </td>
+                                      <td>
+                                        <%= data.Token %>
+                                      </td>
+                                      <td>
+                                        <form>
+                                          <button type="button" class="btn btn-info" onclick="window.location.href='/user/update?id=<%= data.id %>'">edit</button>
+                                        </form>
+                                        <form>
+                                          <button type="button" class="btn btn-danger" onclick="myClick('<%= data.id %>')">delete</button>
+                                        </form>
+                                      </td>
+                          
+                                    </tr>
+                                    <% }); %>
+                                </table>
+                          
+                              </div>
+                  </table>
+                 
+         
+            
+
+    </body>
+</html>
